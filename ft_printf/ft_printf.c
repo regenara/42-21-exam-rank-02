@@ -230,10 +230,14 @@ void			ft_print_d(t_ft_printf *data, va_list argptr, char type)
 			data->width = data->width - len;
 		else
 			data->width = data->width - data->precision;
+		if (data->precision && data->point)
+			data->precision -= len;
 		if (data->is_negative)
 			data->width--;
 		while (data->width-- > 0)
 			data->count += ft_putchar(' ');
+		while (data->point &&data->precision-- > 0)
+			data->count += ft_putchar('0');
 		if (data->is_negative)
 			data->count += ft_putchar('-');
 		if (type == 'd')
@@ -261,6 +265,11 @@ char 			*ft_parser(t_ft_printf *data, char *text, va_list argptr)
 	}
 	if (data->width < 0)
 		data->width = -data->width;
+	if (data->precision < 0)
+	{
+		data->precision = 0;
+		data->point = 0;
+	}
 	if (*text == 's')
 		ft_print_s(data, argptr);
 	else if (*text == 'd' || *text == 'x')

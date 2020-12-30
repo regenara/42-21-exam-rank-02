@@ -64,7 +64,7 @@
 
 #include "get_next_line.h"
 
-int		get_next_line(int fd, char **line)
+int		get_next_line(char **line)
 {
 	char	c;
 	char	*buf;
@@ -74,7 +74,7 @@ int		get_next_line(int fd, char **line)
 	buf = (char *)malloc(10000);
 	*line = buf;
 	i = 0;
-	while ((br = read(fd, &c, 1)) > 0 && c != '\n' && c != '\0')
+	while ((br = read(0, &c, 1)) > 0 && c != '\n' && c != '\0')
 	{
 		buf[i] = c;
 		i++;
