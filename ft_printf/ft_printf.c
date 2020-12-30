@@ -236,7 +236,7 @@ void			ft_print_d(t_ft_printf *data, va_list argptr, char type)
 			data->width--;
 		while (data->width-- > 0)
 			data->count += ft_putchar(' ');
-		while (data->point &&data->precision-- > 0)
+		while (data->point && data->precision-- > 0)
 			data->count += ft_putchar('0');
 		if (data->is_negative)
 			data->count += ft_putchar('-');
