@@ -4,3 +4,5 @@ main.c
 .DS_Store
 .idea
 a.out
+exam-printf
+system_d.c
